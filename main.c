@@ -2,26 +2,14 @@
 #include <stdio.h>
 #include <locale.h>
 
-// Вариант 10
-// Вычисление возраста по дате рождения
+// Вариант 15
+// Пересчет числа световых лет в астрономические единицы
 int main() {
     setlocale(LC_CTYPE, "RUS");
-    int day, month, year;
-    int curDay, curMonth, curYear;
-    int birth, current, age;
-    puts("Введите дату рождения (дд мм гггг)");
-    scanf("%d %d %d", &day, &month, &year); // дата рождения
-    puts("Введите сегодняшнюю дату (дд мм гггг)");
-    scanf("%d %d %d", &curDay, &curMonth, &curYear); // сегодняшняя дату
-
-    // Склеиваем дату в одно число
-    // Так более поздняя дата всегда дает большее число
-    birth = year * 10000 + month * 100 + day;
-    current = curYear * 10000 + curMonth * 100 + curDay;
-    age = (current - birth) / 10000; // годы стоят в старших разрядах, поэтому делим разницу на 10000
-
-    printf("Дата рождения: %02d.%02d.%d\n", day, month, year);
-    printf("Сегодня: %02d.%02d.%d\n", curDay, curMonth, curYear);
-    printf("Возраст: %d (полных лет)\n", age);
+    double ly, au;
+    puts("Введите число световых лет");
+    scanf("%lf", &ly); // расстояние в световых годах
+    au = ly * 63241.077; // в одном световом году 63241.077 астрономической единицы
+    printf("%g св. лет = %.3f а. е.\n", ly, au);
     return 0;
 }
